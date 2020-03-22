@@ -1,0 +1,14 @@
+import os
+import pandas as pd
+os.chdir(r'/Users/zhangliyuan/Downloads/通话记录0224') #更改当前工作路径
+dir_out = ("通话记录_巡检_20200225.xlsx") #输出文件的文件名
+
+excels = [
+    pd.read_excel(fname)
+    for fname in os.listdir("./")
+    if ".xlsx" in fname
+]
+df = pd.concat(excels)
+df.to_excel(dir_out, index = False)
+### 运行前，把文件夹里的excel都关掉。
+print('done!')
